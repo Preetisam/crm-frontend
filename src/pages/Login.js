@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import { Dropdown, DropdownButton } from 'react-bootstrap'
+import {userLogin, userSignUp} from '../api/auth'
 
 function Login(){
 
@@ -18,6 +19,15 @@ function Login(){
             password: password,
         }
 
+        userLogin(data).then((res) => {
+            console.log("ELogin data is " + JSON.stringify(res.data))
+            console.log("Login is successful")
+            setMessage("Login is successful")
+        }).catch((error) => {
+            console.log("Error occured during login " + JSON.stringify(error))
+            setMessage(JSON.stringify(error.message))
+        })
+
         console.log("Login data is " + JSON.stringify(data))
     }
 
@@ -26,10 +36,19 @@ function Login(){
         const data = {
             userId: userId,
             password: password,
-            userName: userName,
-            userEmail: userEmail,
-            userType: userType
+            name: userName,
+            email: userEmail,
+            userType: userType,
+            userStatus: "APPROVED"
         }
+
+        userSignUp(data).then((res) => {
+            console.log("Sign up successful")
+            setMessage("Signup is succesful")
+        }).catch((error) => {
+            console.log("Error occured during signup " +  JSON.stringify(error))
+            setMessage(error.message)
+        })
 
         console.log("Signup data is " + JSON.stringify(data))
     }
@@ -97,7 +116,7 @@ function Login(){
                                             </div>
 
                                             <div className='col'>
-                                            <DropdownButton align='end' title={userType} id='userType' onSelect={(e) => setUserType(e.target.value)} variant='light'>
+                                            <DropdownButton align='end' title={userType} id='userType' onSelect={(e) => setUserType(e)} variant='light'>
                                                 <Dropdown.Item eventKey="CUSTOMER">CUSTOMER</Dropdown.Item>
                                                 <Dropdown.Item eventKey="ENGINEER">ENGINEER</Dropdown.Item>
                                             </DropdownButton>
