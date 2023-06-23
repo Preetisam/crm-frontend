@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://crm-backend-2.onrender.com";
+const BASE_URL = "https://notification-backend.onrender.com";
 
 //signup
 export async function userSignUp(data){
