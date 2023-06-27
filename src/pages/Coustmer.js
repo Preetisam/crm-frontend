@@ -1,5 +1,6 @@
 import MaterialTable from "@material-table/core";
 import { useState, useEffect } from "react";
+
 import Sidebar from "../components/Sidebar";
 import { Button, DropdownButton, Modal,  Dropdown} from "react-bootstrap";
 import { fetchTicket,createTicketApi } from "../api/ticket";
@@ -9,6 +10,7 @@ function Customer() {
     const [message, setMessage] = useState("");
     const [createTicketModal, setCreateTicketModal] = useState(false);
     const [priority, setPriority] = useState("");
+  
     const columns = [
       {
         title: "ID",
@@ -141,10 +143,11 @@ function Customer() {
                       onSelect={(value) => setPriority(value.toString())}
                       variant="light"
                     >
-                      <Dropdown.Item eventKey="1">1</Dropdown.Item>
-                      <Dropdown.Item eventKey="2">2</Dropdown.Item>
-                      <Dropdown.Item eventKey="3">3</Dropdown.Item>
-                      <Dropdown.Item eventKey="4">4</Dropdown.Item>
+                      <Dropdown.Item eventKey="1" fw-normal="true">1</Dropdown.Item>
+                     <Dropdown.Item eventKey="2" fw-normal="true">2</Dropdown.Item>
+                    <Dropdown.Item eventKey="3" fw-normal="true">3</Dropdown.Item>
+                    <Dropdown.Item eventKey="4" fw-normal="true">4</Dropdown.Item>
+
                     </DropdownButton>
                   </div>
   
