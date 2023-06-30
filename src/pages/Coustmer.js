@@ -127,27 +127,29 @@ function Customer() {
     console.log("Selected ticket details are:", JSON.stringify(currentSelectedTicket));
   };
 
+
   const onTicketUpdate = (e) => {
-    const { name, value } = e.target;
-    setCurrentSelectedTicket((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+    if(e.target.name === "description"){
+        currentSelectedTicket.description = e.target.value
+    }else if(e.target.name === "status"){
+        currentSelectedTicket.status = e.target.status
+    }
 
-  const updateTicket = (e) => {
-    e.preventDefault();
+    updateCurrentSelectedTicket(Object.assign({}, currentSelectedTicket))
+}
+const updateTicket = (e) => {
+  e.preventDefault()
 
-    updateTicketApi(currentSelectedTicket._id, currentSelectedTicket)
-      .then((res) => {
-        setUpdateTicketModal(false);
-        setMessage("Ticket updated successfully");
-        fetchTicketData();
-      })
-      .catch((err) => {
-        setMessage(err.message);
-      });
-  };
+  updateTicketApi(currentSelectedTicket._id, currentSelectedTicket)
+  .then((res) => {
+      setUpdateTicketModal(false)
+      setMessage("Ticket updated successfully")
+      fetchTicketData()
+  }).catch((err) => {
+      setMessage(err.message)
+  })
+}
+
   const navigate = useNavigate();
 
   const logoutFn = () => {
@@ -186,7 +188,7 @@ function Customer() {
 
         <Card style={{ width: "18rem" }}>
           <Card.Body>
-            <Card.Title>IN PROGRESS</Card.Title>
+            <Card.Title>INPROGRESS</Card.Title>
             <Card.Text>{inProgressCount} tickets</Card.Text>
           </Card.Body>
         </Card>
@@ -240,7 +242,7 @@ function Customer() {
 
                 <div className="input-group m-1">
                   <label className="label label-md input-group-text">Priority</label>
-                  <select name="priority" id="priority">
+                  <select name="priority" id="priority" required>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
