@@ -2,19 +2,17 @@ import axios from 'axios';
 
 const BASE_URL = 'https://backend-crm-yic4.onrender.com';
 
-export async function fetchEngineers() {
-  try {
-    const response = await axios.get(`${BASE_URL}/api/engineers`, {
-      headers: {
-        'x-access-token': localStorage.getItem('token')
-      }
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching engineer data:', error);
-    throw new Error('Failed to fetch engineer data');
-  }
-}
+export function fetchTickets(){
+  const Tickets = axios.get(`${URL}/crm/app/v1/tickets/getAllTickets`,{
+    headers:{
+  "x-access-token":localStorage.getItem("Token")
+    }
+  })
+  console.log(Tickets)
+  return Tickets
+
+}  
+  
 export async function getEngineerTicketsApi(engineerId) {
     try {
       const response = await axios.get(`${BASE_URL}/api/engineers/${engineerId}/tickets`, {

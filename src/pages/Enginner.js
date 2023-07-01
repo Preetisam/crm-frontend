@@ -1,8 +1,7 @@
 import MaterialTable from "@material-table/core";
 import { useState, useEffect } from "react";
-import { fetchEngineers,  getEngineerTicketsApi } from "../api/enginner";
-
-import { fetchTickets,updateTicketApi } from '../api/ticket';
+import { fetchTickets, getEngineerTicketsApi } from "../api/enginner";
+import { updateTicketApi } from "../api/ticket";
 import Sidebar from "../components/Sidebar";
 import { Button, Modal, Card } from "react-bootstrap";
 import React from "react";
@@ -94,18 +93,18 @@ function Engineer() {
     updateCurrentSelectedTicket(Object.assign({}, currentSelectedTicket))
 }
 const updateTicket = (e) => {
-  e.preventDefault()
+  e.preventDefault();
 
   updateTicketApi(currentSelectedTicket._id, currentSelectedTicket)
-  .then((res) => {
-      setUpdateEngineerModal(false)
-      setMessage("Ticket updated successfully")
-      fetchEngineerData()
-  }).catch((err) => {
-      setMessage(err.message)
-  })
-}
-
+    .then((res) => {
+      setUpdateEngineerModal(false);
+      setMessage("Ticket updated successfully");
+      fetchEngineerData();
+    })
+    .catch((err) => {
+      setMessage(err.message);
+    });
+};
  
   
 
@@ -296,5 +295,6 @@ const updateTicket = (e) => {
     </div>
   );
 }
+
 
 export default Engineer;
