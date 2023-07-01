@@ -18,7 +18,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Login/>} />
       {localStorage.getItem("userTypes") === "CUSTOMER" && <Route path="/customer" element={<Coustomer/>} />}
-      {localStorage.getItem("userTypes") === "ENGINNER" && <Route path="/enginner" element={<Enginner/>} />}
+     
       <Route path="/enginner" element={<Enginner />}/>
       <Route path="/admin" element={<Admin/>} />
       <Route path="*" element={<ErrorPage />} />
