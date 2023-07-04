@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://backend-crm-yic4.onrender.com';
+const BASE_URL = 'https://project-crm.onrender.com'; 
 
 export function fetchTickets(){
-  const Tickets = axios.get(`${URL}/crm/app/v1/tickets/getAllTickets`,{
+  const Tickets = axios.get(`${BASE_URL}/crm/app/v1/tickets/getAllTickets`,{
     headers:{
   "x-access-token":localStorage.getItem("Token")
     }

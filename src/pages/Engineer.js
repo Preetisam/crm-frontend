@@ -1,6 +1,6 @@
 import MaterialTable from "@material-table/core";
 import { useState, useEffect } from "react";
-import { fetchTickets, getEngineerTicketsApi } from "../api/enginner";
+import { fetchTickets, getEngineerTicketsApi } from "../api/engineer";
 import { updateTicketApi } from "../api/ticket";
 import Sidebar from "../components/Sidebar";
 import { Button, Modal, Card } from "react-bootstrap";
