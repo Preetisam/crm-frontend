@@ -23,17 +23,19 @@ function Engineer() {
   ];
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const ticketData = await fetchTickets();
-        setTicketDetails(ticketData);
-        updateTicketCounts(ticketData);
-      } catch (error) {
-        console.log("Error occurred while fetching tickets:", error);
-      }
-    };
+   
     fetchData();
   }, []);
+  const fetchData = async () => {
+    console.log("ticket created")
+    try {
+      const ticketData = await fetchTickets();
+      setTicketDetails(ticketData);
+      updateTicketCounts(ticketData);
+    } catch (error) {
+      console.log("Error occurred while fetching tickets:", error);
+    }
+  };
 
   // Update ticket counts
   function updateTicketCounts(tickets) {

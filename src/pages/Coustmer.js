@@ -47,7 +47,7 @@ function Customer(){
     useEffect(() => {
 
         fetchTicketData()
-        fetchTicketCounts(); 
+        // fetchTicketCounts(); 
 
     }, [])
 
@@ -125,36 +125,36 @@ function Customer(){
 
 
     //displaying the count of tickets
-    async function fetchTicketCounts() {
-      try {
-        const response = await fetchTickets();
-        const ticketData = response.data;
+    // async function fetchTicketCounts() {
+    //   try {
+    //     const response = await fetchTickets();
+    //     const ticketData = response.data;
   
-        let openCount = 0;
-        let closedCount = 0;
-        let inProgressCount = 0;
-        let blockedCount = 0;
+    //     let openCount = 0;
+    //     let closedCount = 0;
+    //     let inProgressCount = 0;
+    //     let blockedCount = 0;
   
-        ticketData.forEach((ticket) => {
-          if (ticket.status === "OPEN") {
-            openCount++;
-          } else if (ticket.status === "CLOSED") {
-            closedCount++;
-          } else if (ticket.status === "IN_PROGRESS") {
-            inProgressCount++;
-          } else if (ticket.status === "BLOCKED") {
-            blockedCount++;
-          }
-        });
+    //     ticketData.forEach((ticket) => {
+    //       if (ticket.status === "OPEN") {
+    //         openCount++;
+    //       } else if (ticket.status === "CLOSED") {
+    //         closedCount++;
+    //       } else if (ticket.status === "IN_PROGRESS") {
+    //         inProgressCount++;
+    //       } else if (ticket.status === "BLOCKED") {
+    //         blockedCount++;
+    //       }
+    //     });
   
-        setOpenCount(openCount);
-        setClosedCount(closedCount);
-        setInProgressCount(inProgressCount);
-        setBlockedCount(blockedCount);
-      } catch (error) {
-        console.log("Error occurred while fetching ticket counts:", error);
-      }
-    }
+    //     setOpenCount(openCount);
+    //     setClosedCount(closedCount);
+    //     setInProgressCount(inProgressCount);
+    //     setBlockedCount(blockedCount);
+    //   } catch (error) {
+    //     console.log("Error occurred while fetching ticket counts:", error);
+    //   }
+    // }
     const navigate = useNavigate();
 
     const logoutFn = () => {
